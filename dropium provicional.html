@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DROPIUM Tienda Oficial</title>
+  <link href="image 2.jpg" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Urbanist', sans-serif;
+      background-color: #0d0d0d;
+      color: #fff;
+    }
+    header, .footer {
+      background-color: #111;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #333;
+    }
+    header h1, .footer { font-size: 1.8rem; color: #f0c93c; }
+    nav a { margin-left: 1.5rem; text-decoration: none; color: #fff; font-weight: 600; cursor: pointer; }
+    nav a:hover { color: #f0c93c; }
+    .hero {
+      background: url('images.jpg') no-repeat center center/cover;
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .hero h2 {
+      font-size: 3rem;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 1rem;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 3rem;
+    }
+    .product {
+      background: #1a1a1a;
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .product:hover { transform: scale(1.05); }
+    .product img { width: 100%; border-radius: 8px; cursor: pointer; }
+    .product h3 { margin: 0.5rem 0; }
+    .product p { color: #ccc; }
+    .whatsapp-btn {
+      background-color: #25D366;
+      color: #fff;
+      padding: 0.7rem 1.2rem;
+      border-radius: 5px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      gap: 0.5rem;
+      border: none;
+      font-size: 1rem;
+      text-decoration: none;
+    }
+    .whatsapp-btn:hover { background-color: #1ebe5b; }
+    #product-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); z-index: 12000; justify-content: center; align-items: center; }
+    #product-modal > div { background: #111; padding: 2rem; display: flex; flex-direction: column; border-radius: 10px; max-width: 500px; width: 90%; position: relative; color: #fff; gap: 1rem; text-align: center; }
+    #modal-image { width: 100%; border-radius: 10px; object-fit: cover; user-select: none; }
+    #modal-title { margin-bottom: 0.5rem; font-size: 1.8rem; font-weight: 700; }
+    #modal-price { margin-bottom: 1rem; font-size: 1.2rem; color: #f0c93c; }
+    #product-modal .close-modal { position: absolute; top: 15px; right: 20px; font-size: 2rem; color: #fff; cursor: pointer; user-select: none; font-weight: 900; background: transparent; border: none; }
+    .notice { background-color: #333; padding: 1rem; border-radius: 5px; color: #f0c93c; margin-top: 1rem; font-weight: 600; }
+    .footer { justify-content: center; border-top: 2px solid #333; border-bottom: none; margin-top: 2rem; }
+  </style>
+</head>
+<body>
+<header>
+  <h1>DROPIUM OFFICIAL</h1>
+  <nav>
+    <a href="#relojes">Relojes</a>
+    <a href="#kaws">KAWS</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Estilo que marca el tiempo. Arte que trasciende.</h2>
+</section>
+
+<section class="products" id="relojes">
+  <div class="product" onclick="showProductDetails('Reloj Oro Clásico', 350000, 'https://i.ibb.co/4WWKvMQ/reloj1.jpg')">
+    <img src="https://i.ibb.co/4WWKvMQ/reloj1.jpg" alt="Reloj edición limitada" />
+    <h3>Reloj Oro Clásico</h3>
+    <p>$350.000 COP</p>
+  </div>
+  <div class="product" onclick="showProductDetails('KAWS x G-Shock', 590000, 'https://i.ibb.co/d0v0q5x/reloj2.jpg')">
+    <img src="https://i.ibb.co/d0v0q5x/reloj2.jpg" alt="Reloj deportivo" />
+    <h3>Reloj KAWS x G-Shock</h3>
+    <p>$590.000 COP</p>
+  </div>
+</section>
+
+<section class="products" id="kaws">
+  <div class="product" onclick="showProductDetails('KAWS Companion Grey', 1200000, 'https://i.ibb.co/zhHpnDt/kaws1.jpg')">
+    <img src="https://i.ibb.co/zhHpnDt/kaws1.jpg" alt="KAWS Companion" />
+    <h3>KAWS Companion Grey</h3>
+    <p>$1.200.000 COP</p>
+  </div>
+  <div class="product" onclick="showProductDetails('KAWS BFF Blue', 1500000, 'https://i.ibb.co/BB4FjK4/kaws2.jpg')">
+    <img src="https://i.ibb.co/BB4FjK4/kaws2.jpg" alt="KAWS BFF" />
+    <h3>KAWS BFF Blue</h3>
+    <p>$1.500.000 COP</p>
+  </div>
+</section>
+
+<!-- Modal Producto -->
+<div id="product-modal" role="dialog">
+  <div>
+    <button class="close-modal" onclick="closeProductModal()">×</button>
+    <img id="modal-image" src="" alt="Producto seleccionado" />
+    <h2 id="modal-title"></h2>
+    <p id="modal-price"></p>
+    <div class="notice">⚠️ Solo aceptamos compras mediante WhatsApp. La página está en mantenimiento.</div>
+    <a class="whatsapp-btn" href="https://wa.me/573170427346" target="_blank">
+      <img src="https://img.icons8.com/ios-filled/20/ffffff/whatsapp.png"/> Contactar por WhatsApp
+    </a>
+  </div>
+</div>
+
+<footer class="footer">
+  © DROPIUM OFFICIAL
+</footer>
+
+<script>
+function showProductDetails(name,price,img){
+  document.getElementById('modal-image').src=img;
+  document.getElementById('modal-title').textContent=name;
+  document.getElementById('modal-price').textContent=`$${price.toLocaleString()} COP`;
+  document.getElementById('product-modal').style.display='flex';
+}
+function closeProductModal(){ document.getElementById('product-modal').style.display='none'; }
+</script>
+</body>
+</html>
