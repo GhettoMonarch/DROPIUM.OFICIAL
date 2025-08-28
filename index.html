@@ -93,27 +93,34 @@
   <h2>Estilo que marca el tiempo. Arte que trasciende.</h2>
 </section>
 
+<!-- Relojes -->
 <section class="products" id="relojes">
-  <div class="product" onclick="showProductDetails('Reloj Oro Clásico', 350000, 'https://i.ibb.co/4WWKvMQ/reloj1.jpg')">
-    <img src="https://i.ibb.co/4WWKvMQ/reloj1.jpg" alt="Reloj edición limitada" />
-    <h3>Reloj Oro Clásico</h3>
-    <p>$350.000 COP</p>
+  <div class="product" onclick="showProductDetails('Rolex Submarine Green', 88000, 'rolexsubplataverde.jpeg')">
+    <img src="rolexsubplataverde.jpeg" alt="Rolex submarine green" />
+    <h3>Rolex Submarine Green</h3>
+    <p>$88.000 COP</p>
+  </div> 
+  <div class="product" onclick="showProductDetails('Rolex GMT-Master II Blue', 88000, 'rolexgmtmaster2.jpeg')">
+    <img src="rolexgmtmaster2.jpeg" alt="Rolex GMT-Master II Blue" />
+    <h3>Rolex GMT-Master II Blue</h3>
+    <p>$88.000 COP</p>
   </div>
-  <div class="product" onclick="showProductDetails('KAWS x G-Shock', 590000, 'https://i.ibb.co/d0v0q5x/reloj2.jpg')">
-    <img src="https://i.ibb.co/d0v0q5x/reloj2.jpg" alt="Reloj deportivo" />
-    <h3>Reloj KAWS x G-Shock</h3>
-    <p>$590.000 COP</p>
+  <div class="product" onclick="showProductDetails('Rolex Deepsea', 94 000, 'rolexdeapseadoradoazul.png')">
+    <img src="rolexdeapseadoradoazul.png" alt="Rolex Deepsea" />
+    <h3>Rolex Deepsea</h3>
+    <p>$94.000 COP</p>
   </div>
 </section>
 
+<!-- KAWS -->
 <section class="products" id="kaws">
   <div class="product" onclick="showProductDetails('KAWS Companion Grey', 1200000, 'https://i.ibb.co/zhHpnDt/kaws1.jpg')">
-    <img src="https://i.ibb.co/zhHpnDt/kaws1.jpg" alt="KAWS Companion" />
+    <img src="https://i.ibb.co/zhHpnDt/kaws1.jpg" alt="KAWS Companion Grey" />
     <h3>KAWS Companion Grey</h3>
     <p>$1.200.000 COP</p>
   </div>
   <div class="product" onclick="showProductDetails('KAWS BFF Blue', 1500000, 'https://i.ibb.co/BB4FjK4/kaws2.jpg')">
-    <img src="https://i.ibb.co/BB4FjK4/kaws2.jpg" alt="KAWS BFF" />
+    <img src="https://i.ibb.co/BB4FjK4/kaws2.jpg" alt="KAWS BFF Blue" />
     <h3>KAWS BFF Blue</h3>
     <p>$1.500.000 COP</p>
   </div>
@@ -144,8 +151,9 @@ function showProductDetails(name,price,img){
   document.getElementById('modal-price').textContent=`$${price.toLocaleString()} COP`;
   document.getElementById('product-modal').style.display='flex';
 }
-function closeProductModal(){ document.getElementById('product-modal').style.display='none'; }
+function closeProductModal(){ 
+  document.getElementById('product-modal').style.display='none'; 
+}
 </script>
 </body>
 </html>
-
